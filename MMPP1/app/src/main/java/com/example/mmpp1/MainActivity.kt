@@ -11,13 +11,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val detailNumField = findViewById<EditText>(R.id.editTextNumber)
-        val detailNumber = detailNumField.toString().toInt()
+        val detailNumber = findViewById<EditText>(R.id.editTextNumber)
         val startButton = findViewById<Button>(R.id.button)
         startButton.setOnClickListener{
-            if (detailNumber > 0){
+            if (detailNumber.text.toString().toInt() > 0){
                 Intent(this,Animation::class.java).also {
-                    it.putExtra("EXTRA_NUMBER",detailNumber)
+                    it.putExtra("EXTRA_NUMBER",detailNumber.text.toString().toInt())
                     startActivity(it)
                 }
             } else{
