@@ -29,24 +29,25 @@ class Animation : AppCompatActivity() {
         var machine1 = Machine()
         var machine2 = Machine2()
 
+        /*Главный цыкл*/
         while (count!=0){
             itemList.forEach {
-                var index = 0
                 machine1.increaseCount(machine1.itemCount)
                 machine2.startMachine(itemList)
-                machine1.itemDone(itemList[index])
-                machine2.itemDone(itemList[index+1])
-                if (itemList[index].done1 == true and itemList[index].done2 == false ){
-                        itemList.remove(itemList[index])
-                        doneItems.add(itemList[index])
-                        doneItems.remove(itemList[index])
-                        itemList.add(itemList[index])
-                    } else if (itemList[index].done1 == true and itemList[index].done2 == true){
-                            doneItems.add(itemList[index])
-                            finalItems.add(itemList[index])
-                            doneItems.remove(itemList[index])
-                        }
+                machine1.itemDone(it)
+                machine2.itemDone(it)
+                if (it.done1 == true and it.done2 == false ){
+                        itemList.remove(it)
+                        doneItems.add(it)
+                        doneItems.remove(it)
+                        itemList.add(it)
+                    } else if (it.done1 == true and it.done2 == true){
+                            doneItems.add(it)
+                            finalItems.add(it)
+                            doneItems.remove(it)
+                    }
                 }
+                count = count - 1
             }
         }
     }
