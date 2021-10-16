@@ -37,10 +37,8 @@ class Animation : AppCompatActivity() {
                 machine1.itemDone(it)
                 machine2.itemDone(it)
                 if (it.done1 == true and it.done2 == false ){
-                        itemList.remove(it)
                         doneItems.add(it)
                         doneItems.remove(it)
-                        itemList.add(it)
                     } else if (it.done1 == true and it.done2 == true){
                             doneItems.add(it)
                             finalItems.add(it)
@@ -48,8 +46,12 @@ class Animation : AppCompatActivity() {
                     }
                 }
                 count = count - 1
+                if (itemList.size == 0){
+                    TODO("Логика подсчета показателей")
+                }
             }
         }
+
     }
 
 
