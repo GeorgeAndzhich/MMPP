@@ -30,12 +30,12 @@ class Animation : AppCompatActivity() {
         var machine2 = Machine2()
 
         /*Главный цыкл*/
-        while (count!=0){
+
             itemList.forEach {
                 machine1.increaseCount(machine1.itemCount)
                 machine2.startMachine(itemList)
                 machine1.itemDone(it)
-                machine2.itemDone(it)
+                machine2.itemDone(it) /*Ошибка - одну деталь одновременно обрабатывают два станка*/
                 if (it.done1 == true and it.done2 == false ){
                         doneItems.add(it)
                         doneItems.remove(it)
@@ -43,15 +43,18 @@ class Animation : AppCompatActivity() {
                             doneItems.add(it)
                             finalItems.add(it)
                             doneItems.remove(it)
+                            itemList.remove(it)
                     }
                 }
-                count = count - 1
                 if (itemList.size == 0){
-                    TODO("Логика подсчета показателей")
+                    TODO("Логика расчета показателей")
+                    /*Здесь понадобятся т, время которе прошло.
+                    * Формулы для расчета:
+                    * Производительность [П]
+                    *   П = сделанные / время которое прошло
+                    * Уровень брака [Б]:
+                    * Б = (совокупная бракованность деталей / сумма брака станков )*100*/
                 }
-            }
-        }
-
-    }
-
+       }
+   }
 

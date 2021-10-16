@@ -6,5 +6,6 @@ class Machine2() : Machine() {
             increaseCount(itemCount)
         }
     }
+    override val brak = 0.08
     override val t = 40
 }
