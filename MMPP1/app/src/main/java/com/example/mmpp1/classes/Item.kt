@@ -1,3 +1,3 @@
 package com.example.mmpp1.classes
 
-data class Item (val count:Int, var done:Boolean)
+data class Item ( var done1:Boolean,var done2:Boolean)

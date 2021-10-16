@@ -1,12 +1,18 @@
 package com.example.mmpp1.classes
 
-open class Machine(val itemCount:Int){
+open class Machine(){
     fun increaseCount(itemCount: Int):Int{
         return itemCount+1
     }
-
+    var itemCount = 0
+    open val t = 60
     fun itemDone(item :Item):Boolean{
-        item.done = true
-        return item.done
+        if (item.done1 == false){
+            item.done1 = true
+            return item.done1
+        }else{
+            item.done2 = true
+            return item.done2
+        }
     }
 }
