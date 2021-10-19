@@ -30,20 +30,20 @@ class Animation : AppCompatActivity() {
         var machine2 = Machine2()
 
         /*Главный цыкл*/
-
+            for (item in itemList.indices)
             itemList.forEach {
                 machine1.increaseCount(machine1.itemCount)
                 machine2.startMachine(itemList)
-                machine1.itemDone(it)
-                machine2.itemDone(it) /*Ошибка - одну деталь одновременно обрабатывают два станка*/
-                if (it.done1 == true and it.done2 == false ){
-                        doneItems.add(it)
-                        doneItems.remove(it)
-                    } else if (it.done1 == true and it.done2 == true){
-                            doneItems.add(it)
-                            finalItems.add(it)
-                            doneItems.remove(it)
-                            itemList.remove(it)
+                machine1.itemDone(itemList[item])
+                machine2.itemDone(itemList[item+1]) /*Ошибка - одну деталь одновременно обрабатывают два станка*/ /*Ошибка обработана!!!*/
+                if (itemList[item].done1 == true and itemList[item].done2 == false ){
+                        doneItems.add(itemList[item])
+                        doneItems.remove(itemList[item])
+                    } else if (itemList[item].done1 == true and itemList[item].done2 == true){
+                            doneItems.add(itemList[item])
+                            finalItems.add(itemList[item])
+                            doneItems.remove(itemList[item])
+                            itemList.remove(itemList[item])
                     }
                 }
                 if (itemList.size == 0){
