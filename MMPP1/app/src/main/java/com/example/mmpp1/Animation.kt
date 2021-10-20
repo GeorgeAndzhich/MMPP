@@ -12,7 +12,7 @@ class Animation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animation)
-        val detailNumber = intent.getIntExtra("EXTRA_NUMBER", 1)
+        var detailNumber = intent.getIntExtra("EXTRA_NUMBER", 1)
         val text = findViewById<TextView>(R.id.textView3)
         text.text = detailNumber.toString()
         var count = text.text.toString().toInt()
@@ -21,7 +21,7 @@ class Animation : AppCompatActivity() {
         /*Инициализация начальных данных и структур*/
         var doneItems = ArrayList<Item>()
         var finalItems = ArrayList<Item>()
-        var itemList = ArrayList<Item>()
+        var itemList = ArrayList<Item>(detailNumber)
         for (count in itemList.listIterator()) {
             var item = Item(false, false)
             itemList.add(item)
@@ -43,9 +43,10 @@ class Animation : AppCompatActivity() {
                     finalItems.add(itemList[item])
                     doneItems.remove(itemList[item])
                     itemList.remove(itemList[item])
+                    detailNumber = itemList.size
                 }
 
-            if (itemList.size == 0) {
+            if (detailNumber == 0) {
                 TODO("Логика расчета показателей")
                 /*Здесь понадобятся т, время которе прошло.
                     * Формулы для расчета:
@@ -53,6 +54,10 @@ class Animation : AppCompatActivity() {
                     *   П = сделанные / время которое прошло
                     * Уровень брака [Б]:
                     * Б = (совокупная бракованность деталей / сумма брака станков )*100*/
+                var P = detailNumber
+                var B = 0
+
+
             }
         }
     }

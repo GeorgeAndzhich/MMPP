@@ -7,8 +7,9 @@ open class Machine(){
     open val brak = 0.02
     var itemCount = 0
     open val t = 60
+
     fun itemDone(item :Item):Boolean{
-        if (item.done1 == false){
+        if (!item.done1){
             item.done1 = true
             return item.done1
         }else{
