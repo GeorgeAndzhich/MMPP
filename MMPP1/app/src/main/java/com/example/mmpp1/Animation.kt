@@ -22,8 +22,7 @@ class Animation : AppCompatActivity() {
         var doneItems = ArrayList<Item>()
         var finalItems = ArrayList<Item>()
         var itemList = ArrayList<Item>(detailNumber)
-        for (count in itemList.listIterator()) {
-            var item = Item(false, false)
+        for (item in itemList.listIterator()) {
             itemList.add(item)
         }
         var machine1 = Machine()
@@ -54,12 +53,13 @@ class Animation : AppCompatActivity() {
                     *   П = сделанные / время которое прошло
                     * Уровень брака [Б]:
                     * Б = (совокупная бракованность деталей / сумма брака станков )*100*/
-                var P = detailNumber
-                var B = 0
+                var P:Int = detailNumber
+                var B:Int = 0
 
 
             }
         }
+
     }
    }
 
