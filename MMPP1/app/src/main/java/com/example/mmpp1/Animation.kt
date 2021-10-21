@@ -16,6 +16,9 @@ class Animation : AppCompatActivity() {
         val text = findViewById<TextView>(R.id.textView3)
         text.text = detailNumber.toString()
         var count = text.text.toString().toInt()
+        var stanok1Text = findViewById<TextView>(R.id.textView6)
+        var stanok2Text = findViewById<TextView>(R.id.textView8)
+        var finalItemsText = findViewById<TextView>(R.id.textView10)
 
 
         /*Инициализация начальных данных и структур*/
@@ -28,8 +31,15 @@ class Animation : AppCompatActivity() {
         var machine1 = Machine()
         var machine2 = Machine2()
 
+        var B:Int = 0
+        var P:Int = 0
+
         /*Главный цыкл*/
         for (item in itemList.indices){
+            text.text = detailNumber.toString()
+            stanok1Text.text = machine1.itemCount.toString()
+            stanok2Text.text = machine2.itemCount.toString()
+            finalItemsText.text = finalItems.size.toString()
                 machine1.increaseCount(machine1.itemCount)
                 machine2.startMachine(itemList)
                 machine1.itemDone(itemList[item])
@@ -46,16 +56,13 @@ class Animation : AppCompatActivity() {
                 }
 
             if (detailNumber == 0) {
-                TODO("Логика расчета показателей")
-                /*Здесь понадобятся т, время которе прошло.
-                    * Формулы для расчета:
-                    * Производительность [П]
-                    *   П = сделанные / время которое прошло
-                    * Уровень брака [Б]:
-                    * Б = (совокупная бракованность деталей / сумма брака станков )*100*/
-                var P:Int = detailNumber
-                var B:Int = 0
-
+                P = detailNumber
+                B = 0
+                Intent(this,Final::class.java).also {
+                    it.putExtra("EXTRA_P",P)
+                    it.putExtra("EXTRA_B",B)
+                    startActivity(it)
+                }
 
             }
         }
